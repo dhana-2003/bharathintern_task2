@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Latest Posts</h2>
+    {% for post in posts %}
+        <article>
+            <h3><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></h3>
+            <p>{{ post.date_posted.strftime('%B %d, %Y') }}</p>
+            <p>{{ post.content[:150] }}...</p>
+        </article>
+    {% endfor %}
+    <a href="{{ url_for('add_post') }}">Add a New Post</a>
+{% endblock %}
